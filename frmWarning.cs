@@ -122,15 +122,17 @@ namespace rensenWare
                              * 0 - Easy; 1 - Normal; 2 - Hard; 3 - Lunatic; ? - Extra
                              * 
                              */
-                            if (BitConverter.ToInt16(_buffer, 0) != 3)
+                            if ((BitConverter.ToInt16(_buffer, 0) > 3) || (BitConverter.ToInt16(_buffer, 0) < 0))
                             {
-                                ProcStatus.Invoke(new MethodInvoker(() =>
+                                /*ProcStatus.Invoke(new MethodInvoker(() =>
                                 {
-                                    ProcStatus.Text = "NOT LUNATIC LEVEL!";
+                                    ProcStatus.Text = "";
                                 }));
 
                                 Thread.Sleep(100);
-                                continue;
+                                continue;**/
+                                
+                                // This will only terminate the process if the difficulty is Extra.
                             }
                             else
                             {
@@ -151,6 +153,11 @@ namespace rensenWare
                              * [base address] + 0xAEBD0, as 4bytes int value.
                              * 
                              */
+                             
+                             /*
+                             * Interesting. I'd like you to teach me more about this; I'm willing to learn
+                             **/
+                             
                             var readScore = ReadProcessMemory((int)_handle, 0x004B0C44, _buffer, 4, ref bytesRead);
                             if (!readScore)
                             {
@@ -169,9 +176,21 @@ namespace rensenWare
                              * internally, touhou project process prints score as 10 times of original value.
                              * I don't know why it is.
                              */ 
-                            if (BitConverter.ToInt32(_buffer, 0) > 20000000) // It is 20,000,000
+                             
+                             /*
+                             * To prevent score bugs?
+                             * I don't know either
+                             */
+                             
+                            if (BitConverter.ToInt32(_buffer, 0) < 2147483647) // It is 20,000,000
+                            /*
+                            * If it indeed is 32bit, then the highest value possible of this would be
+                            * 2^31 - 1
+                            * Interestingly a prime number
+                            */
                                 _flag_billion = true;
                             else
+                            // The else block will no longer function
                                 _buffer = null;
 
                             // Let CPU rest
@@ -232,7 +251,8 @@ namespace rensenWare
 
         private void ButtonExit_Click(object sender, EventArgs e)
         {
-            Environment.Exit(0);
+           //  Environment.Exit(0);
+           // This will ensure the exit button will do nothing.
         }
 
         private void ButtonManualDecrypt_Click(object sender, EventArgs e)
