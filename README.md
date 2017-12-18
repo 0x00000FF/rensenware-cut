@@ -15,6 +15,11 @@ SO PLEASE, DO NOT EXECUTE IT IF YOU ARE NOT SURE THAT YOUR DATA IS SAFE FROM REN
 
 Also, DO NOT request me the entire(or encryption part) source code of rensenWare. I decided not to provide it to anyone.
 
+# Need Forcer?
+Repository : https://github.com/0x00000FF/rensenware_force
+Release : https://github.com/0x00000FF/rensenware_force/releases
+
+New version of Forcer (released in Dec. 18 KST) runs as decoy of rensenWare, so you don't have to buy or get Touhou game.
 
 # If you want to get more informations..
 Bleeping Computer : https://www.bleepingcomputer.com/news/security/rensenware-will-only-decrypt-files-if-victim-scores-2-billion-in-th12-game/
