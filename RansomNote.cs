@@ -131,8 +131,6 @@ namespace rensenWare
                         ProcStatus.Invoke(new MethodInvoker(() => {
                             ProcStatus.Text = "NOT LUNATIC LEVEL!";
                         }));
-
-                        Thread.Sleep(100);
                         continue;
                     }
                     else
@@ -156,7 +154,6 @@ namespace rensenWare
                     if (!readScore)
                     {
                         flag = false;
-                        Thread.Sleep(100);
                         continue;
                     }
 
