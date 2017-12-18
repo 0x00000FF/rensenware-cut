@@ -23,6 +23,6 @@ Release : https://github.com/0x00000FF/rensenware_force/releases
 New version of Forcer (released in Dec. 18 KST) runs as decoy of rensenWare, so you don't have to buy or get Touhou game.
 
 # If you want to get more informations..
-Bleeping Computer : https://www.bleepingcomputer.com/news/security/rensenware-will-only-decrypt-files-if-victim-scores-2-billion-in-th12-game/
+Article of Bleeping Computer : https://www.bleepingcomputer.com/news/security/rensenware-will-only-decrypt-files-if-victim-scores-2-billion-in-th12-game/
 
 or open Issues or PR.
