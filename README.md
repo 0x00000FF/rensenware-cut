@@ -17,6 +17,7 @@ Also, DO NOT request me the entire(or encryption part) source code of rensenWare
 
 # Need Forcer?
 Repository : https://github.com/0x00000FF/rensenware_force
+
 Release : https://github.com/0x00000FF/rensenware_force/releases
 
 New version of Forcer (released in Dec. 18 KST) runs as decoy of rensenWare, so you don't have to buy or get Touhou game.
