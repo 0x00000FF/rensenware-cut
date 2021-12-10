@@ -26,3 +26,6 @@ New version of Forcer (released in Dec. 18 KST) runs as decoy of rensenWare, so 
 Article of Bleeping Computer : https://www.bleepingcomputer.com/news/security/rensenware-will-only-decrypt-files-if-victim-scores-2-billion-in-th12-game/
 
 or open Issues or PR.
+
+# NFT?
+I've listed a NFT of an encrypted archive of the initial build of rensenWare. Feel free to [look around](https://opensea.io/assets/0x495f947276749ce646f68ac8c248420045cb7b5e/79159079639104312191251810137557028846907993987024239702269490973116884582401)
